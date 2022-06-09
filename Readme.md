@@ -13,6 +13,7 @@ JTS提供了一套操作几何向量的java类库<br>
 [计算点到线的垂线](docs/jts-core/demo/foot-point.md)<br>
 [延线的画线方向，判断点在线的右侧还是左侧](docs/jts-core/demo/left-right.md)<br>
 [线到线投影](docs/jts-core/demo/linetolineshadow.md)<br>
+[根据起始点求一个线的子线](docs/jts-core/demo/sublinebypoint.md)<br>
 ## 代码类库地址
 
 [JTS GitHub](https://github.com/locationtech/jts)
