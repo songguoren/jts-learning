@@ -19,30 +19,20 @@ public class BufferTest {
         GeometryFactory geometryFactory = new GeometryFactory();
         WKTReader wktReader = new WKTReader(geometryFactory);
 
-        Geometry link = wktReader.read("LINESTRING Z (116.38916015 39.57247715 21.412,116.3889396 39.57249508 21.646)");
+        Geometry link = wktReader.read("LINESTRING(116.38916015 39.57247715,116.3889396 39.57249508)");
 
         // 6378137.0D
         double metersPerDegree = 6.283185307179586D * 6378137.0D / 360.0D;
         System.out.println(2D / metersPerDegree);
         System.out.println(metersPerDegree);
 
-        Geometry linb =  BufferOp.bufferOp(link, 1D / metersPerDegree, 3);
+        Geometry linb =  BufferOp.bufferOp(link, 1D / metersPerDegree, 1);
         System.out.println(linb.toText());
 
-        List<String> a = new ArrayList<>();
-        for(int i=0;i<100000000;i++){
-            a.add(Math.random()+"");
-        }
+        Geometry link2 = wktReader.read("LINESTRING (116.388974 39.572468 34, 116.388996 39.572488 56, 116.389 39.572492 23, 116.389011 39.572504 13)");
 
-
-        Thread.sleep(TimeUnit.SECONDS.toSeconds(100000));
-
-
-       Geometry linkBuffer = link.buffer(1D / metersPerDegree);
-        System.out.println(linkBuffer.toText());
-
-
-        System.out.println( 2.0 * Math.PI * 6378137.0D / 360.0);
+        Geometry in = linb.intersection(link2);
+        System.out.println(in.toText());
 
 
 
